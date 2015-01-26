@@ -137,4 +137,7 @@ micro: all
 cub: OPT_DEFS += -DKEYMAP_CUB
 cub: all
 
+arvids: OPT_DEFS += -DKEYMAP_ARVIDS
+arvids: all
+
 
