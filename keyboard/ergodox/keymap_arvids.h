@@ -25,17 +25,17 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /* |  ~L2   |  ! 1 |  " 2 |  # 3 |  $ 4 |  % 5 |      |           |      |  & 6 |  / 7 |  ( 8 |  ) 9 |  = 0 |        | */
           FN2   ,   1  ,   2  ,   3  ,   4  ,   5  ,  NO ,               NO  ,   6  ,   7  ,   8  ,   9  ,   0  ,   NO   ,
     /* |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------| */
-    /* |   Tab  |  a A |  w W |  e E |  r R |  t T |      |           |      |  y Y |  u U |  i I |  o O |  p P |   Tab  | */
-           TAB  ,   Q  ,   W  ,   E  ,   R  ,   T  ,  NO  ,              NO  ,   Y  ,   U  ,   I  ,   O  ,   P  ,   TAB  ,
+    /* |        |  a A |  w W |  e E |  r R |  t T |      |           |      |  y Y |  u U |  i I |  o O |  p P |        | */
+           NO   ,   Q  ,   W  ,   E  ,   R  ,   T  ,  NO  ,              NO  ,   Y  ,   U  ,   I  ,   O  ,   P  ,   NO   ,
     /* |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------| */
-    /* |  LCtl  |  a A |  s S |  d D |  f F |  g G |------|           |------|  h H |  j J |  k K |  l L |  å Å |  RCtL  | */
-          LCTL  ,   A  ,   S  ,   D  ,   F  ,   G  ,                             H  ,   J  ,   K  ,   L  , LBRC ,  RCTL  ,
+    /* |        |  a A |  s S |  d D |  f F |  g G |------|           |------|  h H |  j J |  k K |  l L |  å Å |        | */
+           NO   ,   A  ,   S  ,   D  ,   F  ,   G  ,                             H  ,   J  ,   K  ,   L  , LBRC ,  NO    ,
     /* |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------| */
-    /* |  Lsft  | z Z  |  x X |  c C |  v V |  b B |      |           |      |  n N |  m M |  ö Ö |  ä Ä |  ↑   |  Rsft  | */
-          LSFT  ,   Z  ,   X  ,   C  ,   V  ,   B  ,  NO  ,              NO  ,   N  ,   M  , SCLN , QUOT ,  UP  ,  RSFT  ,
+    /* |        | z Z  |  x X |  c C |  v V |  b B |      |           |      |  n N |  m M |  ö Ö |  ä Ä |  ↑   |        | */
+            NO  ,   Z  ,   X  ,   C  ,   V  ,   B  ,  NO  ,              NO  ,   N  ,   M  , SCLN , QUOT ,  UP  ,  NO    ,
     /* `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------' */
     /*   |      |      |      | LGui | ~L1  |                                       | ~L1  | RGui |   ←  |   ↓  |   →  |   */
-            NO  ,  NO  ,  NO  , LGUI , FN1 ,                                         FN1 , RGUI , LEFT , DOWN , RIGHT,
+            NO  ,  NO  ,  NO  , LGUI ,  FN1 ,                                          FN1 , RGUI , LEFT , DOWN , RIGHT,
     /*   `----------------------------------'                                       `----------------------------------'   */
     /*                                        ,-------------.       ,-------------.                                        */
     /*                                        |      |      |       |      |      |                                        */
@@ -44,8 +44,8 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /*                                 | Spc  | Bspc |      |       |      | Del  | Ent  |                                 */
                                                         NO  ,          NO  , 
     /*                                 | LCtrl| LAlt |------|       |------| LAlt |LCtrl |                                 */
-    /*                                 |      |      | Tab  |       | Esc  |      |      |                                 */
-                                         FN26 , FN27 , TAB  ,         ESC  , FN28 , FN29
+    /*                                 |      |      |Tab Sft|      |Esc Sft|      |      |                                 */
+                                         FN26 , FN27 , FN30 ,         FN31  , FN28 , FN29
     /*                                 `--------------------'       `--------------------'                                 */
     ),
 
@@ -147,7 +147,7 @@ static const uint16_t PROGMEM fn_actions[] = {
   [18] = ACTION_MODS_KEY(MOD_RSFT, KC_DOT),// FN18: :
   [19] = ACTION_MODS_KEY(MOD_RSFT, KC_SLSH),// FN19: _
   [20] = ACTION_MODS_KEY(MOD_RSFT | MOD_RALT, KC_7),// FN20:  \
-  [21] = ACTION_MODS_KEY(MOD_RSFT, KC_GRAVE),// FN21: >
+  [21] = ACTION_MODS_KEY(MOD_RSFT, KC_GRV),// FN21: >
   [22] = ACTION_MODS_KEY(MOD_RSFT, KC_MINS),// FN22: ?
   [23] = ACTION_MODS_KEY(MOD_RSFT, KC_2),// FN23: "
   [24] = ACTION_MODS_KEY(MOD_RSFT, KC_0),// FN24: =
@@ -156,7 +156,9 @@ static const uint16_t PROGMEM fn_actions[] = {
   [26] = ACTION_MODS_TAP_KEY(MOD_LCTL, KC_SPC),// FN26
   [27] = ACTION_MODS_TAP_KEY(MOD_LALT, KC_BSPC),// FN27
   [28] = ACTION_MODS_TAP_KEY(MOD_LALT, KC_DELETE),// FN28
-  [29] = ACTION_MODS_TAP_KEY(MOD_LCTL, KC_ENT),// FN26
+  [29] = ACTION_MODS_TAP_KEY(MOD_LCTL, KC_ENT),// FN29
+  [30] = ACTION_MODS_TAP_KEY(MOD_LSFT, KC_TAB),// FN30
+  [31] = ACTION_MODS_TAP_KEY(MOD_LSFT, KC_ESC),// FN31
   
   
 };
