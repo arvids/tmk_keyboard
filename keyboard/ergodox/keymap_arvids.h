@@ -22,20 +22,20 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ERGODOX_KEYMAP( // Layer 0
                    
     /* ,--------------------------------------------------.           ,--------------------------------------------------. */
-    /* |  ~L2   |  ! 1 |  " 2 |  # 3 |  $ 4 |  % 5 |      |           |      |  & 6 |  / 7 |  ( 8 |  ) 9 |  = 0 |        | */
-          FN2   ,   1  ,   2  ,   3  ,   4  ,   5  ,  NO ,               NO  ,   6  ,   7  ,   8  ,   9  ,   0  ,   NO   ,
+    /* |  L3    |  ! 1 |  " 2 |  # 3 |  $ 4 |  % 5 |      |           |      |  & 6 |  / 7 |  ( 8 |  ) 9 |  = 0 |        | */
+          FN30  ,   1  ,   2  ,   3  ,   4  ,   5  ,  NO ,               NO  ,   6  ,   7  ,   8  ,   9  ,   0  ,   NO   ,
     /* |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------| */
     /* |        |  a A |  w W |  e E |  r R |  t T |      |           |      |  y Y |  u U |  i I |  o O |  p P |        | */
            NO   ,   Q  ,   W  ,   E  ,   R  ,   T  ,  NO  ,              NO  ,   Y  ,   U  ,   I  ,   O  ,   P  ,   NO   ,
     /* |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------| */
     /* |        |  a A |  s S |  d D |  f F |  g G |------|           |------|  h H |  j J |  k K |  l L |  å Å |        | */
            NO   ,   A  ,   S  ,   D  ,   F  ,   G  ,                             H  ,   J  ,   K  ,   L  , LBRC ,  NO    ,
-    /* |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------| */
+    /* |--------+------+------+------+------+------|  L2  |           |  L2  |------+------+------+------+------+--------| */
     /* |        | z Z  |  x X |  c C |  v V |  b B |      |           |      |  n N |  m M |  ö Ö |  ä Ä |  ↑   |        | */
-            NO  ,   Z  ,   X  ,   C  ,   V  ,   B  ,  NO  ,              NO  ,   N  ,   M  , SCLN , QUOT ,  UP  ,  NO    ,
+            NO  ,   Z  ,   X  ,   C  ,   V  ,   B  ,  FN2 ,              FN2 ,   N  ,   M  , SCLN , QUOT ,  UP  ,  NO    ,
     /* `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------' */
-    /*   |      |      |      | LGui | ~L1  |                                       | ~L1  | RGui |   ←  |   ↓  |   →  |   */
-            NO  ,  NO  ,  NO  , LGUI ,  FN1 ,                                          FN1 , RGUI , LEFT , DOWN , RIGHT,
+    /*   |      |      |      | LGui |TAB L1|                                       |TAB L1| RGui |   ←  |   ↓  |   →  |   */
+            NO  ,  NO  ,  NO  , LGUI ,  FN31,                                         FN31 , RGUI , LEFT , DOWN , RIGHT,
     /*   `----------------------------------'                                       `----------------------------------'   */
     /*                                        ,-------------.       ,-------------.                                        */
     /*                                        |      |      |       |      |      |                                        */
@@ -43,26 +43,26 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /*                                 ,------|------|------|       |------+------+------.                                 */
     /*                                 | Spc  | Bspc |      |       |      | Del  | Ent  |                                 */
                                                         NO  ,          NO  , 
-    /*                                 | LCtrl| LAlt |------|       |------| LAlt |LCtrl |                                 */
-    /*                                 |      |      |Tab Sft|      |Esc Sft|      |      |                                 */
-                                         FN26 , FN27 , FN30 ,         FN31  , FN28 , FN29
+    /*                                 | LSft | LAlt |------|       |------| LAlt | LCtrl|                                 */
+    /*                                 |      |      | Esc  |       | Esc  |      |      |                                 */
+                                         FN26 , FN27 ,  ESC ,         ESC  , FN28 , FN29
     /*                                 `--------------------'       `--------------------'                                 */
     ),
 
     ERGODOX_KEYMAP( // Layer 1 
 
     /* ,--------------------------------------------------.           ,--------------------------------------------------. */
-    /* |        |   F1 |   F2 |   F3 |   F4 |   F5 |   F6 |           |   F7 |   F8 |   F9 |  F10 |  F11 |  F12 |        | */
-           NO   ,   F1 ,   F2 ,   F3 ,   F4 ,   F5 ,   F6 ,               F7 ,   F8 ,   F9 ,  F10 ,  F11 ,  F12 ,  TRNS  ,
+    /* |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        | */
+            NO  , TRNS , TRNS , TRNS , TRNS , TRNS , TRNS ,             TRNS , TRNS , TRNS , TRNS , TRNS , TRNS ,  TRNS  ,
     /* |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------| */
-    /* |        |   !  |   @  |   #  |   $  |  %   |      |           |      |   ^  |  &   |   *  |  (   |   )  |        | */
-          TRNS  ,  FN3 ,  FN4 , FN5  ,  FN6 ,  FN7 , TRNS ,             TRNS ,  FN8 ,  FN9 , PAST , FN10 , FN11 ,  TRNS  ,
+    /* |        |   >  |  -   |   +  |   (  |  )   |      |           |      |   ^  |  &   |   *  |   @  |  \   |        | */
+          TRNS  , FN21 , SLSH , MINS , FN10 , FN11 , TRNS ,             TRNS ,  FN8 ,  FN9 , PAST , FN4  , FN20 ,  TRNS  ,
     /* |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------| */
-    /* |        |   {  |   }  |   [  |   ]  |   |  |------|           |------|   ,  |  .   |   ;  |   :  |  _   |        | */
-           TRNS , FN12 , FN13 , FN14 , FN15 , FN16 ,                           COMM , DOT  , FN17 , FN18 , FN19 ,  TRNS  ,
+    /* |        |  |   |  !   |  =   |  [   |   ]  |------|           |------|   ,  |  .   |   ;  |   :  |  _   |        | */
+           TRNS , FN16 , FN3  , FN24 , FN14 , FN15 ,                           COMM , DOT  , FN17 , FN18 , FN19 ,  TRNS  ,
     /* |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------| */
-    /* |        |   -  |   +  |   =  |   \  |   /  |      |           |      |  <   |   >  |  ?   |   "  |  '   |        | */
-          TRNS  , SLSH , MINS , FN24 , FN20 , FN25 , TRNS ,             TRNS , GRV  , FN21 , FN22 , FN23 , BSLS ,  TRNS  ,
+    /* |        |  <   |  /   |  %   |   {  |   }  |      |           |      |   ?  |   "  |  '   |  $   |  #   |        | */
+         TRNS   ,  GRV , FN25 ,  FN7 , FN12 , FN13 , TRNS  ,            TRNS ,  FN22,  FN23 , BSLS,  FN6 ,  FN5 ,  TRNS  ,
     /* `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------' */
     /*   |      |      |      |      |      |                                       |      |      |      |      |      |   */
            TRNS , TRNS , TRNS , TRNS , TRNS ,                                         TRNS , TRNS , TRNS , TRNS , TRNS ,
@@ -80,7 +80,37 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     ),
 
+
     ERGODOX_KEYMAP( // Layer 2
+    /* ,--------------------------------------------------.           ,--------------------------------------------------. */
+    /* |        |   F1 |   F2 |   F3 |   F4 |   F5 |   F6 |           |   F7 |   F8 |   F9 |  F10 |  F11 |  F12 |        | */
+           NO   ,   F1 ,   F2 ,   F3 ,   F4 ,   F5 ,   F6 ,               F7 ,   F8 ,   F9 ,  F10 ,  F11 ,  F12 ,  TRNS  ,
+    /* |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------| */
+    /* |    -   |   -  |   -  |   -  |   -  |   -  |   -  |           |   -  |   -  |   -  |   -  |   -  |   -  |   -    | */
+           TRNS , TRNS , TRNS , TRNS , TRNS , TRNS , TRNS ,             TRNS , TRNS , TRNS , TRNS , TRNS , TRNS ,  TRNS  ,
+    /* |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------| */
+    /* |    -   |   -  |   -  |   -  |   -  |   -  |------|           |------|   -  |   -  |   -  |   -  |   -  |   -    | */
+           TRNS , TRNS , TRNS , TRNS , TRNS , TRNS ,                           TRNS , TRNS , TRNS , TRNS , TRNS ,  TRNS  ,
+    /* |--------+------+------+------+------+------|   -  |           |   -  |------+------+------+------+------+--------| */
+    /* |    -   |   -  |   -  |   -  |   -  |   -  |      |           |      |   -  |   -  |   -  |   -  |   -  |   -    | */
+           TRNS , TRNS , TRNS , TRNS , TRNS , TRNS , TRNS ,             TRNS , TRNS , TRNS , TRNS , TRNS , TRNS ,  TRNS  ,
+    /* `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------' */
+    /*   |  -   |   -  |   -  |   -  |   -  |                                       |   -  |   -  |   -  |   -  |   -  |   */
+           TRNS , TRNS , TRNS , TRNS , TRNS ,                                         TRNS , TRNS , TRNS , TRNS , TRNS ,
+    /*   `----------------------------------'                                       `----------------------------------'   */
+    /*                                        ,-------------.       ,-------------.                                        */
+    /*                                        |   -  |   -  |       |   -  |   -  |                                        */
+                                                TRNS , TRNS ,         TRNS , TRNS ,
+    /*                                 ,------|------|------|       |------+------+------.                                 */
+    /*                                 |      |      |   -  |       |   -  |      |      |                                 */
+                                                       TRNS ,         TRNS ,
+    /*                                 |   -  |   -  |------|       |------|   -  |   -  |                                 */
+    /*                                 |      |      |   -  |       |   -  |      |      |                                 */
+                                         TRNS , TRNS , TRNS ,         TRNS , TRNS , TRNS
+    /*                                 `--------------------'       `--------------------'                                 */
+    ),
+
+    ERGODOX_KEYMAP( // Layer 3
 
     /* ,--------------------------------------------------.           ,--------------------------------------------------. */
     /* |        |   -  |   -  |   -  |   -  |   -  |  -   |           |   -  |   -  |   -  |   -  |   -  |   -  | TEENSY | */
@@ -96,7 +126,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             NO  ,   NO ,   NO ,   NO ,   NO ,   NO ,   NO ,               NO ,   NO ,   NO ,   NO ,   NO ,   NO ,    NO  ,
     /* `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------' */
     /*   |   -  |   -  |   -  |  -   |  -   |                                       |   -  |    - |   -  |   -  |   -  |   */
-             NO ,   NO , _MUTE ,_VOLDOWN,_VOLUP,                                           NO ,    NO,   NO ,   NO ,   NO ,
+             NO ,   NO ,  MUTE , VOLD, VOLU,                                      NO ,    NO,   NO ,   NO ,   NO ,
     /*   `----------------------------------'                                       `----------------------------------'   */
     /*                                        ,-------------.       ,-------------.                                        */
     /*                                        |   -  |   -  |       |   -  |   -  |                                        */
@@ -134,7 +164,7 @@ static const uint16_t PROGMEM fn_actions[] = {
   [ 5] = ACTION_MODS_KEY(MOD_RSFT, KC_3),// FN5: #
   [ 6] = ACTION_MODS_KEY(MOD_RALT, KC_4),// FN6: $
   [ 7] = ACTION_MODS_KEY(MOD_RSFT ,KC_5),// FN7: %
-  [ 8] = ACTION_MODS_KEY(MOD_RSFT, KC_RBRC),// FN8: ^
+  [ 8] = ACTION_MODS_KEY(MOD_RSFT, KC_RBRC),// FN8: ^ 
   [ 9] = ACTION_MODS_KEY(MOD_RSFT, KC_6),// FN9: &
   [10] = ACTION_MODS_KEY(MOD_RSFT, KC_8),// FN10: (
   [11] = ACTION_MODS_KEY(MOD_RSFT, KC_9),// FN11: )
@@ -147,19 +177,18 @@ static const uint16_t PROGMEM fn_actions[] = {
   [18] = ACTION_MODS_KEY(MOD_RSFT, KC_DOT),// FN18: :
   [19] = ACTION_MODS_KEY(MOD_RSFT, KC_SLSH),// FN19: _
   [20] = ACTION_MODS_KEY(MOD_RSFT | MOD_RALT, KC_7),// FN20:
-  [21] = ACTION_MODS_KEY(MOD_LSFT, KC_GRV),// FN21: >
+  [21] = ACTION_MODS_KEY(MOD_RSFT, KC_GRV),// FN21: >
   [22] = ACTION_MODS_KEY(MOD_RSFT, KC_MINS),// FN22: ?
   [23] = ACTION_MODS_KEY(MOD_RSFT, KC_2),// FN23: "
   [24] = ACTION_MODS_KEY(MOD_RSFT, KC_0),// FN24: =
   [25] = ACTION_MODS_KEY(MOD_RSFT, KC_7),// FN25: /
 
-  [26] = ACTION_MODS_TAP_KEY(MOD_LCTL, KC_SPC),// FN26
+  [26] = ACTION_MODS_TAP_KEY(MOD_LSFT, KC_SPC),// FN26
   [27] = ACTION_MODS_TAP_KEY(MOD_LALT, KC_BSPC),// FN27
   [28] = ACTION_MODS_TAP_KEY(MOD_LALT, KC_DELETE),// FN28
   [29] = ACTION_MODS_TAP_KEY(MOD_LCTL, KC_ENT),// FN29
-  [30] = ACTION_MODS_TAP_KEY(MOD_LSFT, KC_TAB),// FN30
-  [31] = ACTION_MODS_TAP_KEY(MOD_LSFT, KC_ESC),// FN31
-  
+  [30] = ACTION_LAYER_MOMENTARY(3),
+  [31] = ACTION_LAYER_TAP_KEY(1, KC_TAB),
   
 };
 
